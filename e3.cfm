@@ -12,7 +12,7 @@
     }).listSort("text","asc");
 
 
-    finalanswer = stringsorted.listMap(function(e){return mid(e,4,e.len())});
+    finalanswer = stringsorted.listMap(function(e){return mid(e,4,e.len());});
 
 </cfscript>
 
