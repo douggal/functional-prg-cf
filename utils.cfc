@@ -14,6 +14,7 @@ public function init(){
     return s;
 }
 
+    // recursive - CF supports but has limited resources.
     public numeric function recurSum(required origin, required end) {
         var o = arguments.origin;
         var e = arguments.end;

@@ -37,6 +37,8 @@
     thread action="join" name="myThread,myOtherThread";
     // session value sum should have sum of the integers
 
+
+
     // IDEA 2
     //isolate threads and sum outputs after threads complete.  what is the sum???
     session.tmp1 = 0;
@@ -50,13 +52,14 @@
     //await completion of both threads before continuing...
     thread action="join" name="t1,t2";
 
-    goodsum = session.tmp1 + session.tmp2;
+    idea2 = session.tmp1 + session.tmp2;
+
 
 
     // IDEA 3 Do things the FP way
     // apply a reduce function to the list elements returning sum (left to right)
     // CF probably cannot but Scala, Clojure have optimizations that can take advantage of extra cores
-    goodsumbetter = myList.listReduce(function(previousValue,value){return previousValue+value;},0);
+    idea3 = myList.listReduce(function(previousValue,value){return previousValue+value;},0);
 
     
 </cfscript>
@@ -75,21 +78,28 @@
         </ul>
     </nav>
 
+    <header>
     <h1>Example 2</h1>
-    <h2>Immutable values - why?  Make concurrency easier.</h2>
-    <h3>Find the sum of integers from 1 to 1 000</h3>
+    </header>
+
+    <article>
+        <header>
+            <h2>Immutable values - why?  Make concurrency easier.</h2>
+            <p>Find the sum of integers from 1 to 1 000</p>
+        </header>
 
     <cfscript>
 
-        writeOutput("<p>Sum of numbers 1 to #limit# using TWO THREADS.</p>");
+        writeOutput("<p>Sum of numbers 1 to #encodeForHTML(limit)# using TWO THREADS.</p>");
         writeOutput("<p>The first example fails, but the 2nd returns correct answer.</p>");
         writeOutput("BAD:  Sum of numbers TWO THREADS: #numberformat(session.sum,',')#");
         writeOutput("<br/>");
-        writeOutput("GOOD: Sum of numbers using isolate threads: #numberformat(goodsum,',')#");
+        writeOutput("GOOD: Sum of numbers using isolated threads: #numberformat(idea2,',')#");
         writeOutput("<br/>");
-        writeOutput("BEST: Sum of numbers using FP: #numberformat(goodsumbetter,',')#");
+        writeOutput("BEST: Sum of numbers using FP: #numberformat(idea3,',')#");
         writeOutput("<br/>");
     
     </cfscript>
-
+    
+    </article>
 </body>

@@ -2,14 +2,14 @@
 
 <cfscript>
 
-    strings = "111111,3333,9,2222222222,44,555,6666,777777";
+    strings = "111111,3333,9,888,2222222222,44,555,6666,777777";
 
     lstrings = strings.ListMap(function(s){return s.len();});
 
     stringsorted = strings.listMap(function(v,i,l) {
-        var newValue = "#numberFormat(v.len(),'00')#:#v#";
-        return newValue;
-    }).listSort("text","asc");
+            var newValue = "#numberFormat(v.len(),'00')#:#v#";
+            return newValue;})
+        .listSort("text","asc");
 
 
     finalanswer = stringsorted.listMap(function(e){return mid(e,4,e.len());});
@@ -30,9 +30,12 @@
             </ul>
         </nav>
     
+        <header>
         <h1>Example 3</h1>
-        <h2>More powerful syntax</h2>
-        <he>Print a list of strings from those with fewest chars to the most chars</h3>
+        </header>
+        <article>
+        <h2>Power Programming</h2>
+        <h3>Print a list of strings sorted in order by length from those with fewest chars to the most chars</h3>
 
         <cfscript>
 
@@ -44,4 +47,5 @@
         
         </cfscript>
 
+        </article>
     </body>
